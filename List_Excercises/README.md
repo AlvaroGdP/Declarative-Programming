@@ -1,0 +1,1 @@
+Solved exercises regarding Lists
