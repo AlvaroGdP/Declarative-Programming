@@ -1,1 +1,3 @@
 http://learnprolognow.org
+
+https://es.slideshare.net/ajdgeniz/aprenda-prolog-en-n-diapositivas
