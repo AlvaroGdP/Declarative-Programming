@@ -73,3 +73,19 @@ evalMonomio(C * x ** N, V, R) :- integer(C), integer(N), R is C * V ** N.
 eval(P, V, R) :- esMonomio(P), !, evalMonomio(P, V, R).
 eval(P + Q, V, R) :- eval(P, V, R1), eval(Q, V, R2), R is R1 + R2.
 
+%dMonomio(P, D).
+%Recibe un monomio P
+%Devuelve la derivada del monomio P
+dMonomio(x, D) :- D is 1, !.
+dMonomio(C, D) :- integer(C), D is 0, !.
+dMonomio(C * x, D) :- integer(C), D is C, !.
+dMonomio(x ** 2, D) :- D = 2 * x, !.
+dMonomio(x ** N, D) :- integer(N), N1 is N - 1, D = N * x ** N1, !.
+dMonomio(C * x ** 2, D) :- integer(C), C1 is C * 2, D = C1 * x, !.
+dMonomio(C * x ** N, D) :- integer(C), integer(N), C1 is C * N , N1 is N - 1, D = C1 * x ** N1, !.
+
+%d(P, D)
+%Recibe un polinomio P
+%Devuelve su derivada D.
+d(P, D) :- esMonomio(P), !, dMonomio(P, D).
+d(P + Q, D) :- d(P, D1), d(Q, D2), D = D1 + D2.
